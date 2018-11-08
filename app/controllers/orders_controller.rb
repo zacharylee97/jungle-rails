@@ -4,7 +4,8 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @email = @order.email
     @total = @order.total_cents.to_f / 100
-    @purchase = @enhanced_cart
+    @purchase = enhanced_cart
+    empty_cart!
   end
 
   def create
