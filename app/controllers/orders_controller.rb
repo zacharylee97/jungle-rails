@@ -4,9 +4,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @email = @order.email
     @total = @order.total_cents.to_f / 100
-    @purchase ||= LineItem.where(order_id: @order.id).map {|product| { product_id: product.product_id } }
-    @products = find_products
-
+    @purchase = @enhanced_cart
   end
 
   def create
@@ -14,7 +12,6 @@ class OrdersController < ApplicationController
     order  = create_order(charge)
 
     if order.valid?
-      empty_cart!
       redirect_to order, notice: 'Your Order has been placed.'
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
@@ -59,14 +56,5 @@ class OrdersController < ApplicationController
     end
     order.save!
     order
-  end
-
-  def find_products
-    @products = []
-    @purchase.each do |item|
-      @product = Product.where(id: item[:product_id])
-      @products << @product
-    end
-    @products
   end
 end
