@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
     @email = @order.email
     @total = @order.total_cents.to_f / 100
     @purchase = enhanced_cart
+    UserMailer.recepit(@order, @purchase)
     empty_cart!
   end
 
