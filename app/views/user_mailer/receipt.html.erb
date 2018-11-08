@@ -8,5 +8,35 @@
     <p>Here is your recepit: </p>
     <p>Total: <%= @total %></p>
     <p>Items:</p>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @purchase.each do |item| %>
+          <tr>
+            <td>
+              <h4><%= item[:product].name %></h4>
+              <br>
+              <p><%= item[:product].description %></p>
+            </td>
+            <td>
+              <%= item[:product].price %>
+            </td>
+            <td>
+              <%= item[:quantity].to_i %>
+            </td>
+            <td>
+              <%= item[:product].price * item[:quantity].to_i %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </body>
 </html>
