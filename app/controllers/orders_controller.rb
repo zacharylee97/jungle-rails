@@ -2,6 +2,11 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @email = @order.email
+    @total = @order.total_cents.to_f / 100
+    @purchase ||= LineItem.where(order_id: @order.id).map {|product| { product_id: product.product_id } }
+    @products = find_products
+
   end
 
   def create
@@ -56,4 +61,12 @@ class OrdersController < ApplicationController
     order
   end
 
+  def find_products
+    @products = []
+    @purchase.each do |item|
+      @product = Product.where(id: item[:product_id])
+      @products << @product
+    end
+    @products
+  end
 end

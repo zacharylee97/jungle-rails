@@ -1,0 +1,19 @@
+<tr>
+  <td>
+    <%= item.pluck(:image)[0] %>
+  </td>
+  <td>
+    <h4><%= item.pluck(:name)[0] %></h4>
+    <br>
+    <p><%= item.pluck(:description)[0] %></p>
+  </td>
+  <td>
+    <%= item.pluck(:price_cents)[0] %>
+  </td>
+  <td>
+    quantity
+  </td>
+  <td>
+    price
+  </td>
+</tr>
