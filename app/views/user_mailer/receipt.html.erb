@@ -1,42 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Hello, thanks for ordering from Jungle!</h1>
-    <p>Here is your recepit: </p>
-    <p>Total: <%= @total %></p>
-    <p>Items:</p>
-    <table>
-      <thead>
-        <tr>
-          <th colspan="2">Product</th>
-          <th>Unit Price</th>
-          <th>Quantity</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @purchase.each do |item| %>
-          <tr>
-            <td>
-              <h4><%= item[:product].name %></h4>
-              <br>
-              <p><%= item[:product].description %></p>
-            </td>
-            <td>
-              <%= item[:product].price %>
-            </td>
-            <td>
-              <%= item[:quantity].to_i %>
-            </td>
-            <td>
-              <%= item[:product].price * item[:quantity].to_i %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </body>
-</html>
+<p>Hello, thanks for ordering from Jungle!</p>
+<p>Here is your recepit: </p>
+<p>Total: <%= @total %></p>
+<% @purchase.each do |item| %>
+  <p>Product: <%= item[:product].name %></p>
+  <p>Description: <%= item[:product].description %></p>
+  <p>Unit Price: <%= item[:product].price %></p>
+  <p>Quantity: <%= item[:quantity].to_i %></p>
+  <p>Cost: <%= item[:product].price * item[:quantity].to_i %></p>
+  <br><% end %>
