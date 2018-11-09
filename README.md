@@ -3,6 +3,15 @@
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
 
+## Final Product
+
+!["Screenshot of Jungle homepage"](https://github.com/zacharylee97/jungle-rails/blob/dev/docs/jungle_homepage.png?raw=true)
+!["Screenshot of product information"](https://github.com/zacharylee97/jungle-rails/blob/dev/docs/product_information.png?raw=true)
+!["Screenshot of product reviews"](https://github.com/zacharylee97/jungle-rails/blob/dev/docs/cart.png?raw=true)
+!["Screenshot of cart"](https://github.com/zacharylee97/jungle-rails/blob/dev/docs/product_reviews.png?raw=true)
+!["Screenshot of order details"](https://github.com/zacharylee97/jungle-rails/blob/dev/docs/order_details.png?raw=true)
+
+
 ## Setup
 
 1. Fork & Clone
