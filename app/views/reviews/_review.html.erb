@@ -2,8 +2,10 @@
   <p><strong>User #<%= review.user_id %></strong></p>
   <p> <%= review.description %></p>
   <p>Rating: <%= review.rating %>/5</p>
-  <%= link_to 'Delete', [review.product, review],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
+  <% if review.user_id == session[:user_id] %>
+    <%= link_to 'Delete', [review.product, review],
+                 method: :delete,
+                 data: { confirm: 'Are you sure?' } %><br>
+  <% end %>
   <br>
 </div>

@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     @review.product_id = params[:product_id]
     @review.user_id = session[:user_id]
     if @review.save
-      redirect_to "/"
+      redirect_to product_path(@product)
     else
       redirect_to :back
     end
