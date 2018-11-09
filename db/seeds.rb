@@ -140,21 +140,21 @@ Review.destroy_all
 
 Review.create!({
   product_id: 12,
-   user_id: 1,
-   description: "Great product! I love it",
+   user_id: 20,
+   description: "Great product! I love it!",
    rating: 4
  })
 
 Review.create!({
   product_id: 12,
-   user_id: 2,
+   user_id: 35,
    description: "Meh, it's not for me",
    rating: 2
  })
 
 Review.create!({
   product_id: 12,
-   user_id: 3,
+   user_id: 38,
    description: "Everyone needs to get this!",
    rating: 5
  })
