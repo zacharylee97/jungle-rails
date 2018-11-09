@@ -19,7 +19,11 @@
           <dt>Description</dt>
           <dd><%= @product.description %></dd>
           <dt>Rating</dt>
-          <dd><%= @rating %></dd>
+          <% if @reviews.count > 0 %>
+            <dd><%= @rating %>/5</dd>
+            <% else %>
+            <dd>No reviews yet</dd>
+          <% end %>
           <dt>Quantity</dt>
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>

@@ -8,11 +8,15 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @review = Review.new
     @reviews = Review.where(product_id: params[:id]).order(created_at: :desc)
-    @rating = average_rating(@reviews)
+    @rating = average_rating(@reviews).round(2)
   end
 
   private
   def average_rating(reviews)
-    reviews.ratings.average(:ratings)
+    sum = 0.0
+    @reviews.each do |review|
+      sum += review.rating
+    end
+    return sum / reviews.count
   end
 end
