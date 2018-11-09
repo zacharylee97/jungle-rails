@@ -25,12 +25,14 @@
         </dl>
       </div>
     </div>
-
+    <br>
     <div class="row">
-      <h4>Reviews</h4>
-      <% @reviews.each do |review| %>
-          <%= render 'review', review: review %>
-      <% end %>
+      <div class="col-sm-8">
+        <h2>Reviews</h2>
+        <% @reviews.each do |review| %>
+            <%= render 'review', review: review %>
+        <% end %>
+      </div>
     </div>
 
   </article>
