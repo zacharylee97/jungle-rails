@@ -31,7 +31,9 @@
         </tr>
       </tfoot>
     </table>
-    <p>Email: <%= @email %></p>
+    <% if @email %>
+      <p>Email: <%= @email %></p>
+    <% end %>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
