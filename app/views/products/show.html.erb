@@ -29,12 +29,12 @@
     <div class="row">
       <div class="col-sm-8">
         <% if current_user %>
-          <%= render 'form' %>
+          <%= render 'reviews/form' %>
         <% end %>
         <br>
         <h2>Reviews</h2>
         <% @reviews.each do |review| %>
-            <%= render 'review', review: review %>
+            <%= render 'reviews/review', review: review %>
         <% end %>
       </div>
     </div>
