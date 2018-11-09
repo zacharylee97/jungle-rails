@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     @review.product_id = params[:product_id]
     @review.user_id = session[:user_id]
     if @review.save
-      redirect_to product_path(@product)
+      redirect_to :back, notice: "Review created!"
     else
       redirect_to :back
     end
