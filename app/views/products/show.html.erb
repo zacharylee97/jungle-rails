@@ -28,6 +28,9 @@
     <br>
     <div class="row">
       <div class="col-sm-8">
+        <h2>Create New Review</h2>
+        <%= render 'form' %>
+        <br>
         <h2>Reviews</h2>
         <% @reviews.each do |review| %>
             <%= render 'review', review: review %>

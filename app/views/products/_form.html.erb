@@ -1,0 +1,10 @@
+  <%= form_for [@product, @review] do |f| %>
+    <div class="form-group">
+      <p>Description</p>
+      <%= f.text_area :description %>
+
+      <p>Rating</p>
+      <%= f.select(:rating, options_for_select(1..5)) %>
+    </div>
+    <%= f.submit 'Submit' %>
+  <% end %>
