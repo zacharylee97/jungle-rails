@@ -30,5 +30,20 @@ RSpec.describe User, type: :model do
                         password: "my_password", password_confirmation: "my_password")
       expect(@user2.save).to eq false
     end
+    it "is not valid without password" do
+      @user = User.new(first_name: "first_name", last_name: "last_name", email: "my_email@email.com",
+                      password: nil, password_confirmation: "my_password")
+      expect(@user.save).to eq false
+    end
+    it "is not valid without password_confirmation" do
+      @user = User.new(first_name: "first_name", last_name: "last_name", email: "my_email@email.com",
+                      password: "my_password", password_confirmation: nil)
+      expect(@user.save).to eq false
+    end
+    it "is not valid if password does not match password_confirmation" do
+      @user = User.new(first_name: "first_name", last_name: "last_name", email: "my_email@email.com",
+                      password: "my_password", password_confirmation: "not_my_password")
+      expect(@user.save).to eq false
+    end
   end
 end
