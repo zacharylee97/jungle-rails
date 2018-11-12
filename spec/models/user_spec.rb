@@ -53,5 +53,23 @@ RSpec.describe User, type: :model do
   end
   describe '.authenticate_with_credentials' do
     # examples for this class method here
+    it "should return user if email and password are authenticated" do
+      @user = User.new(first_name: "first_name", last_name: "last_name", email: "my_email@email.com",
+                      password: "my_password", password_confirmation: "my_password")
+      @user.save
+      login = User.authenticate_with_credentials("my_email@email.com", "my_password")
+      expect(login).to eq @user
+    end
+    it "should return nil if user does not exist" do
+      login = User.authenticate_with_credentials("my_email@email.com", "my_password")
+      expect(login).to eq nil
+    end
+    it "should return nil if the password is incorrect" do
+      @user = User.new(first_name: "first_name", last_name: "last_name", email: "my_email@email.com",
+                      password: "my_password", password_confirmation: "my_password")
+      @user.save
+      login = User.authenticate_with_credentials("my_email@email.com", "not_my_password")
+      expect(login).to eq nil
+    end
   end
 end
