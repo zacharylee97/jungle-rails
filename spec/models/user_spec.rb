@@ -45,5 +45,10 @@ RSpec.describe User, type: :model do
                       password: "my_password", password_confirmation: "not_my_password")
       expect(@user.save).to eq false
     end
+    it "is not valid if password is less than 8 characters" do
+      @user = User.new(first_name: "first_name", last_name: "last_name", email: "my_email@email.com",
+                      password: "short", password_confirmation: "short")
+      expect(@user.save).to eq false
+    end
   end
 end
