@@ -71,5 +71,19 @@ RSpec.describe User, type: :model do
       login = User.authenticate_with_credentials("my_email@email.com", "not_my_password")
       expect(login).to eq nil
     end
+    it "should return user if there is whitespace before and/or after email" do
+      @user = User.new(first_name: "first_name", last_name: "last_name", email: "my_email@email.com",
+                      password: "my_password", password_confirmation: "my_password")
+      @user.save
+      login = User.authenticate_with_credentials("  my_email@email.com  ", "my_password")
+      expect(login).to eq @user
+    end
+    it "should return user if the email is in the wrong case" do
+       @user = User.new(first_name: "first_name", last_name: "last_name", email: "eXample@domain.COM",
+                      password: "my_password", password_confirmation: "my_password")
+      @user.save
+      login = User.authenticate_with_credentials("EXAMPLe@DOMAIN.CoM", "my_password")
+      expect(login).to eq @user
+    end
   end
 end
