@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
 
+  after_create :adjust_product_quantity
+
   def show
     @order = Order.find(params[:id])
     @email = @order.email
@@ -58,5 +60,13 @@ class OrdersController < ApplicationController
     end
     order.save!
     order
+  end
+
+  def adjust_product_quantity
+    @items = LineItems.find_by order_id(self.id)
+    @items.each do |item|
+      @product = Product.find_by id(item.product_id)
+      @product.update_columns(quantity: @product.quantity - 1)
+    end
   end
 end
